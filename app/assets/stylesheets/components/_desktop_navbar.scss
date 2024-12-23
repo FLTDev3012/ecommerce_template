@@ -3,4 +3,57 @@
   height: 6rem;
   content: "";
   background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.desktop-navbar-content {
+  width: $container-width;
+  display: flex;
+  align-items: center;
+}
+
+.desktop-navbar-content p {
+  margin-bottom: 0;
+}
+
+.desktop-navbar-content .logo {
+  margin-right: 40px;
+  font-family: 'IntegralCF-Bold';
+  font-size: 32px;
+}
+
+.desktop-navbar-content .list {
+  display: flex;
+  margin-right: 40px;
+}
+
+.desktop-navbar-content .list p:first-child {
+  margin-left: 0px !important;
+}
+
+.desktop-navbar-content .list p {
+  font-family: "Satoshi-Regular";
+  font-size: 16px;
+  margin-left: 24px;
+}
+
+.desktop-navbar-content .search {
+  display: flex;
+  flex: 1;
+}
+
+.desktop-navbar-content .search input {
+  width: 100%;
+  max-width: 100%;
+}
+
+.desktop-navbar-content .user-logo {
+  display: flex;
+  margin-left: 40px;
+}
+
+.desktop-navbar-content .user-logo p:first-child {
+  margin-right: 14px;
 }
