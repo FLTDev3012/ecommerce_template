@@ -2,7 +2,7 @@
 
 .home-first-container {
   width: 100%;
-  height: calc(100vh - 122px - 6rem - 38px);
+  height: calc(100vh - 6rem - 38px);
   content: "";
   background-color: #F2F0F1;
   display: flex;
@@ -12,7 +12,7 @@
 .home-first-content {
   width: $container-width;
   height: 100%;
-  background-color: red;
+  // background-color: red;
   content: "";
 
 }
@@ -32,4 +32,69 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.home-first-left {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.home-first-left h1 {
+  font-family: 'IntegralCF-Bold';
+  font-size: 64px;
+  margin-bottom: 1.5rem;
+}
+
+.home-first-left a {
+  font-family: "Satoshi-Medium";
+  font-size: 16px;
+  color: #fff;
+  text-decoration: none;
+  background-color: #000;
+  padding: 16px 68px;
+  width: fit-content;
+  border-radius: 62px;
+  margin-bottom: 3rem;
+}
+
+.home-first-quantity-container {
+  display: flex;
+}
+
+.home-first-quantity {
+  padding: 0 32px;
+}
+
+.home-first-quantity:first-child {
+  padding-left: 0;
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.home-first-quantity:last-child {
+  padding-right: 0;
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+
+.home-first-left h2 {
+  font-family: 'Satoshi-Bold';
+  font-size: 40px;
+}
+
+.home-first-left > p {
+  margin-bottom: 1.5rem;
+  margin-right: 60px;
+}
+
+.home-first-left p {
+  font-family: "Satoshi-Regular";
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.home-first-left .home-first-quantity p {
+  margin-bottom: 0rem;
 }
