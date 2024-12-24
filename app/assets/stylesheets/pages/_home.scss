@@ -5,6 +5,16 @@
   height: calc(100vh - 122px - 6rem - 38px);
   content: "";
   background-color: #F2F0F1;
+  display: flex;
+  justify-content: center;
+}
+
+.home-first-content {
+  width: $container-width;
+  height: 100%;
+  background-color: red;
+  content: "";
+
 }
 
 .home-brand-line-container {
