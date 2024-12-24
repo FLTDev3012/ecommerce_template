@@ -19,6 +19,8 @@
 }
 
 .desktop-navbar-content .logo {
+  transform: translateY(-2px);
+  vertical-align: middle;
   margin-right: 40px;
   font-family: 'IntegralCF-Bold';
   font-size: 32px;
@@ -40,13 +42,40 @@
 }
 
 .desktop-navbar-content .search {
-  display: flex;
   flex: 1;
+}
+
+.input-wrapper {
+  position: relative;
+}
+
+.input-wrapper i {
+  position: absolute;
+  left: 16px; /* Ajuste la position à gauche */
+  top: 50%;
+  transform: translateY(-50%); /* Centre verticalement */
+  font-size: 20px; /* Taille de l'icône */
+  color: #909090; /* Couleur de l'icône */
 }
 
 .desktop-navbar-content .search input {
   width: 100%;
   max-width: 100%;
+  border: none;
+  background-color: #f0f0f0;
+  border-radius: 62px;
+  height: 48px;
+  padding: 0 16px 0 48px;
+
+  font-family: "Satoshi-Regular";
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.desktop-navbar-content .search input:focus {
+  outline: none;
+  border: 2px solid #000000; /* Bordure orange pour ce champ */
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); /* Ombre orange */
 }
 
 .desktop-navbar-content .user-logo {
@@ -54,6 +83,6 @@
   margin-left: 40px;
 }
 
-.desktop-navbar-content .user-logo p:first-child {
+.desktop-navbar-content .user-logo img:first-child {
   margin-right: 14px;
 }

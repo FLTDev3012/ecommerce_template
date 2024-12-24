@@ -4,19 +4,22 @@
     <div class="logo">Shop.co</div>
 
     <div class="list">
-      <p>Shop</p>
+      <p>Shop <%= image_tag("arrow_down.svg", alt: "user") %></p>
       <p>On sale</p>
       <p>New Arrivals</p>
       <p>Brands</p>
     </div>
 
     <div class="search">
-      <input type="text" placeholder="Search for products...">
+      <div class="input-wrapper">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" placeholder="Search for products...">
+      </div>
     </div>
 
     <div class="user-logo">
-      <p>panier</p>
-      <p>compte</p>
+      <%= image_tag("cart.svg", alt: "cart") %>
+      <%= image_tag("user.svg", alt: "user") %>
     </div>
 
   </div>
