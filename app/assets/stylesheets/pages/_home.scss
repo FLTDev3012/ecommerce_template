@@ -48,6 +48,7 @@
   font-family: 'IntegralCF-Bold';
   font-size: 64px;
   margin-bottom: 1.5rem;
+  line-height: 1;
 }
 
 .home-first-left a {
@@ -104,8 +105,22 @@
 .home-first-right {
   width: 50%;
   height: 100%;
+  position: relative;
 }
 
-.home-first-right img {
+.home-first-right .mangirl {
   height: 100%;
+}
+
+.home-first-right .little-star {
+  position: absolute;
+  top: 50%;
+  left: 35px;
+  transform: translateY(-50%);
+}
+
+.home-first-right .big-star {
+  position: absolute;
+  top: 75px;
+  right: 0;
 }
