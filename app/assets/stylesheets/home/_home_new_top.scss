@@ -23,12 +23,31 @@
 
 .home-new-item-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+}
+
+.home-new-item-container .one-item-container {
+  margin-right: 20px;
+}
+
+.home-new-item-container .one-item-container:last-child {
+  margin-right: 0px;
 }
 
 .one-item-container .item-img {
   width: 295px;
   height: 298px;
+  border-radius: 20px;
+}
+
+.one-item-container {
+  width: 25%;
+  height: auto;
+}
+
+.one-item-container .item-img {
+  width: 100%;
+  height: auto;
   border-radius: 20px;
 }
 
