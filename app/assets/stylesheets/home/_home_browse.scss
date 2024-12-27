@@ -54,6 +54,8 @@
   background-color: #fff;
   height: 289px;
   border-radius: 20px;
+  position: relative;
+  overflow: hidden;
 }
 
 .grid-item p {
@@ -61,4 +63,14 @@
   font-size: 36px;
   margin-top: 36px;
   margin-left: 36px;
+  z-index: 1;
+  position: relative;
+}
+
+.grid-image {
+  position: absolute;
+  width: auto;
+  height: 100%;
+  top: 0;
+  right: 0;
 }
