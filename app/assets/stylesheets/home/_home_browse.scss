@@ -1,0 +1,64 @@
+.home-browse-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  margin-bottom: calc(1rem + 63px);
+}
+
+.home-browse-content {
+  width: $container-width;
+  background-color: #F0F0F0;
+  border-radius: 40px;
+  padding-bottom: 70px;
+}
+
+.home-browse-title {
+  display: flex;
+  justify-content: center;
+}
+
+.home-browse-title h2 {
+  margin-top: 90px;
+  margin-bottom: 70px;
+  font-family: 'IntegralCF-Bold';
+  font-size: 48px;
+}
+
+.home-browse-grid-container {
+  display: flex;
+  justify-content: center;
+}
+
+.home-browse-grid-content {
+  width: 90%;
+}
+
+
+.home-browse-grid-top {
+  display: grid;
+  gap: 20px; /* Espacement entre les éléments */
+  grid-template-columns: 1fr 2fr; /* Définit les colonnes pour la première ligne */
+}
+
+.home-browse-grid-top .grid-item {
+  margin-bottom: 20px;
+}
+
+.home-browse-grid-bottom {
+  display: grid;
+  gap: 20px; /* Espacement entre les éléments */
+  grid-template-columns: 2fr 1fr; /* Définit les colonnes pour la première ligne */
+}
+
+.grid-item {
+  background-color: #fff;
+  height: 289px;
+  border-radius: 20px;
+}
+
+.grid-item p {
+  font-family: 'Satoshi-Bold';
+  font-size: 36px;
+  margin-top: 36px;
+  margin-left: 36px;
+}

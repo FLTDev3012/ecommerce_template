@@ -6,7 +6,7 @@
 
 .home-new-top-content {
   width: $container-width;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  // border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .home-new-top-title {
@@ -84,6 +84,10 @@
 .home-new-top-link {
   display: flex;
   justify-content: center;
+}
+
+.new-arrivals-link {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .home-new-top-content a {
