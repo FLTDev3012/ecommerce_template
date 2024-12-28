@@ -15,6 +15,24 @@
 
 
   <div class="home-customers-comment-container">
+
+    <div class="comment-container-outside">
+      <div class="comment-stars-container">
+        <%= image_tag("starnote.svg", class:"star-note", alt: "star-note") %>
+        <%= image_tag("starnote.svg", class:"star-note", alt: "star-note") %>
+        <%= image_tag("starnote.svg", class:"star-note", alt: "star-note") %>
+        <%= image_tag("starnote.svg", class:"star-note", alt: "star-note") %>
+        <%= image_tag("starnote_half.svg", class:"star-note", alt: "star-note") %>
+      </div>
+
+      <div class="comment-name-container">
+        <h6>Marie B.</h6>
+        <%= image_tag("certif.svg", class:"certif-img", alt: "certif") %>
+      </div>
+
+      <p class="comment-para">"I'm blown away by the quality and style of the  jvkfdjkv vfkjsvkdfs vkfdskv vfdskvds dkjnfsds kfkdsv vjkfjdkv clothes I received from Shop.co. From casual wear to elegant dresses, every piece I've bought has exceeded my expectations.”</p>
+    </div>
+
     <div class="home-customers-comment-content">
 
       <div class="comment-container">
@@ -74,9 +92,56 @@
 
 
     </div>
+
+    <div class="comment-container-outside">
+      <div class="comment-stars-container">
+        <%= image_tag("starnote.svg", class:"star-note", alt: "star-note") %>
+        <%= image_tag("starnote.svg", class:"star-note", alt: "star-note") %>
+        <%= image_tag("starnote.svg", class:"star-note", alt: "star-note") %>
+        <%= image_tag("starnote.svg", class:"star-note", alt: "star-note") %>
+        <%= image_tag("starnote_half.svg", class:"star-note", alt: "star-note") %>
+      </div>
+
+      <div class="comment-name-container">
+        <h6>Marie B.</h6>
+        <%= image_tag("certif.svg", class:"certif-img", alt: "certif") %>
+      </div>
+
+      <p class="comment-para">"I'm blown away by the quality and style of the  jvkfdjkv vfkjsvkdfs vkfdskv vfdskvds dkjnfsds kfkdsv vjkfjdkv clothes I received from Shop.co. From casual wear to elegant dresses, every piece I've bought has exceeded my expectations.”</p>
+    </div>
+
+
   </div>
 
 
 
 
 </div>
+
+<script>
+
+  function updateCommentWidth() {
+    // Récupérer la largeur de l'écran
+    const screenWidth = window.innerWidth;
+
+    // Calculer 86% de la largeur de l'écran
+    const containerWidth = screenWidth * 0.86;
+
+    // Calculer 33.33% de la largeur calculée
+    const commentWidth = containerWidth * 0.3333;
+
+    // Appliquer la largeur à tous les "comment-container"
+    const commentContainers = document.querySelectorAll(".comment-container-outside");
+
+    commentContainers.forEach((comment) => {
+      comment.style.width = `${commentWidth}px`; // Définit la largeur en pixels
+      comment.style.minWidth = `${commentWidth}px`; // Force une largeur minimale égale
+    });
+  }
+
+  // Exécuter la fonction au chargement de la page
+  document.addEventListener("DOMContentLoaded", updateCommentWidth);
+
+  // Exécuter la fonction au redimensionnement de la fenêtre
+  window.addEventListener("resize", updateCommentWidth);
+</script>

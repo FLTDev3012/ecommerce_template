@@ -35,26 +35,36 @@
 .home-customers-comment-container {
   width: 100%;
   height: fit-content;
-  background-color: red;
+  // background-color: red;
   display: flex;
   justify-content: center;
   margin-bottom: 80px;
+  overflow: hidden;
 }
 
 .home-customers-comment-content {
   width: $container-width;
-  background-color: orange;
+  min-width: $container-width;
+  // background-color: orange;
   position: relative;
   display: flex;
+  margin: 0 20px;
 }
 
 .comment-container {
-  width: 33.33%;
   border: 1px solid rgba(0, 0, 0, 0.1);
   height: 100%;
   padding: 28px 32px;
   border-radius: 20px;
   margin-right: 20px;
+}
+
+.comment-container-outside {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  height: 100%;
+  padding: 28px 32px;
+  border-radius: 20px;
+  filter: blur(2px);
 }
 
 .comment-container:last-child {
@@ -76,4 +86,10 @@
   font-size: 20px;
   margin-bottom: 0;
   margin-right: 4px;
+}
+
+.comment-para {
+  font-family: 'Satoshi-Regular';
+  font-size: 16px;
+  margin-bottom: 0;
 }
