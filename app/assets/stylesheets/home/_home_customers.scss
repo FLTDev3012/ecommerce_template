@@ -1,20 +1,21 @@
 .home-customers-container {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
-.home-customers-content {
+.home-customers-title-arrows-container {
   width: $container-width;
 }
 
-.home-customers-title-and-arrows {
+.home-customers-title-arrows {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
   margin-bottom: 45px;
 }
 
-.home-customers-title-and-arrows h2 {
+.home-customers-title-arrows h2 {
   font-family: 'IntegralCF-Bold';
   font-size: 48px;
   margin-bottom: 0;
@@ -29,3 +30,50 @@
 }
 
 // les commentaires customers doivent finir dans un fichier csss perso
+
+
+.home-customers-comment-container {
+  width: 100%;
+  height: fit-content;
+  background-color: red;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 80px;
+}
+
+.home-customers-comment-content {
+  width: $container-width;
+  background-color: orange;
+  position: relative;
+  display: flex;
+}
+
+.comment-container {
+  width: 33.33%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  height: 100%;
+  padding: 28px 32px;
+  border-radius: 20px;
+  margin-right: 20px;
+}
+
+.comment-container:last-child {
+  margin-right: 0px;
+}
+
+.comment-stars-container {
+  margin-bottom: 1rem;
+}
+
+.comment-name-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.comment-name-container h6 {
+  font-family: 'Satoshi-Bold';
+  font-size: 20px;
+  margin-bottom: 0;
+  margin-right: 4px;
+}
