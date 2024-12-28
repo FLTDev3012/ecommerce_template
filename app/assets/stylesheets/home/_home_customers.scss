@@ -1,0 +1,31 @@
+.home-customers-container {
+  display: flex;
+  justify-content: center;
+}
+
+.home-customers-content {
+  width: $container-width;
+}
+
+.home-customers-title-and-arrows {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 45px;
+}
+
+.home-customers-title-and-arrows h2 {
+  font-family: 'IntegralCF-Bold';
+  font-size: 48px;
+  margin-bottom: 0;
+}
+
+.home-customers-arrows-container {
+  margin-bottom: 10px;
+}
+
+.home-customers-arrow-left {
+  margin-right: 1rem;
+}
+
+// les commentaires customers doivent finir dans un fichier csss perso
