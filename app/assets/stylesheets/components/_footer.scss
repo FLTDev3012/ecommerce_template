@@ -146,3 +146,29 @@
   display: flex;
   justify-content: space-between;
 }
+
+.footer-right-reserved-content p {
+  font-family: "Satoshi-Regular";
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.footer-right-reserved-methode-payment-container {
+  display: flex;
+}
+
+.footer-right-reserved-methode-payment-content {
+  height: 30px;
+  width: 45px;
+  background-color: #fff;
+  outline: .2px solid #D6DCE5;
+  border-radius: 5.38px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 12px;
+}
+
+.footer-right-reserved-methode-payment-content:last-child {
+  margin-right: 0px;
+}
