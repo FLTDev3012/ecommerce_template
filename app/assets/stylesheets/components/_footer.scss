@@ -84,15 +84,14 @@
 
 .footer-bottom-container {
   content: "";
-  background-color: #f95a5a;
   width: 100%;
   display: flex;
   justify-content: center;
+  background-color: #F0F0F0;
 }
 
 .footer-bottom-content {
   padding: 50px 0;
-  background-color: green;
   width: $container-width;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   display: flex;
@@ -103,4 +102,47 @@
   display: flex;
   flex-direction: column;
   max-width: 250px;
+}
+
+.footer-bottom-list-logo h4 {
+  font-family: 'IntegralCF-Bold';
+  font-size: 33.45px;
+  margin-bottom: 30px;
+}
+
+.footer-bottom-list-logo p {
+  font-family: 'Satoshi-Regular';
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.footer-bottom-list h6 {
+  font-family: "Satoshi-Medium";
+  font-size: 16px;
+  margin-bottom: 30px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.footer-bottom-list a{
+  font-family: "Satoshi-Regular";
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.6);
+  margin-bottom: 20px;
+}
+
+// right reserved
+
+.footer-right-reserved-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: #F0F0F0;
+}
+
+.footer-right-reserved-content {
+  padding: 25px 0 90px 0;
+  width: $container-width;
+  display: flex;
+  justify-content: space-between;
 }
