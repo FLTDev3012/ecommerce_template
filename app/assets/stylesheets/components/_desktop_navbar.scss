@@ -86,3 +86,9 @@
 .desktop-navbar-content .user-logo img:first-child {
   margin-right: 14px;
 }
+
+@media (max-width: 909px) {
+  .desktop-navbar-container {
+    display: none;
+  }
+}

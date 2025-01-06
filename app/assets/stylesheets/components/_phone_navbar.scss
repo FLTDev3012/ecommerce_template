@@ -1,0 +1,22 @@
+.phone-navbar-container {
+  width: 100%;
+  height: 4rem;
+  content: "";
+  background-color: #b13e3e;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: none;
+}
+
+.phone-navbar-content {
+  width: $container-width;
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 909px) {
+  .phone-navbar-container {
+    display: block;
+  }
+}
