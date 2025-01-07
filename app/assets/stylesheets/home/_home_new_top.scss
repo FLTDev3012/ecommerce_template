@@ -2,6 +2,7 @@
   width: 100%;
   display: flex;
   justify-content: center;
+  overflow: hidden;
 }
 
 .home-new-top-content {
@@ -96,4 +97,21 @@
   border: 1px solid rgba(0, 0, 0, 0.1);
   padding: 16px 68px;
   border-radius: 62px;
+}
+
+@media (max-width: 850px) {
+
+  .home-new-item-container {
+    justify-content: flex-start;
+  }
+
+  .one-item-container {
+    min-width: 170px;
+  }
+
+  .home-new-top-link a {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
 }
