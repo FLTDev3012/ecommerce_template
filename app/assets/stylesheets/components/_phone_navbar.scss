@@ -2,7 +2,7 @@
   width: 100%;
   height: 4rem;
   content: "";
-  background-color: #b13e3e;
+  background-color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -12,11 +12,40 @@
 .phone-navbar-content {
   width: $container-width;
   display: flex;
+  justify-content: space-between;
   align-items: center;
 }
 
 @media (max-width: 909px) {
   .phone-navbar-container {
-    display: block;
+    display: flex;
   }
+}
+
+.phone-navbar-left-burger-container {
+  height: 18px;
+  display:flex;
+  align-items: center;
+}
+
+.phone-navbar-left-burger-container img {
+  height: 18px;
+  margin-right: 14px;
+}
+
+.phone-navbar-left-burger-container p {
+  margin-bottom: 0;
+  transform: translateY(-3px);
+  font-family: 'IntegralCF-Bold';
+  font-size: 25.2px;
+  text-align: center;
+}
+
+.phone-navbar-right i {
+  font-size: 20px;
+  transform: translateY(3px);
+}
+
+.phone-navbar-right img {
+  margin-left: 12px;
 }
