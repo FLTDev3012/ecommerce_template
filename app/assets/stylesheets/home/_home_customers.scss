@@ -93,3 +93,20 @@
   margin-bottom: 0;
   color: rgba(0, 0, 0, 0.6);
 }
+
+@media (max-width: 820px) {
+  .comment-container-outside {
+    display: none;
+  }
+
+  .home-customers-comment-content {
+    overflow: hidden;
+  }
+
+  .comment-container {
+    min-width: 100%;
+  }
+
+
+
+}

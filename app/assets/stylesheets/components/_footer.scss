@@ -173,3 +173,50 @@
 .footer-right-reserved-methode-payment-content:last-child {
   margin-right: 0px;
 }
+
+@media (max-width: 820px) {
+  .footer-top-content {
+    flex-direction: column;
+  }
+
+  .footer-top-content-title {
+    width: 100%;
+  }
+
+  .footer-top-input-container {
+    width: 100%;
+    margin-top: 36px;
+  }
+
+  .footer-top-content-input {
+    width: 100%;
+  }
+
+  .footer-bottom-list {
+    width: 50%;
+    max-width: 50%;
+    margin-bottom: 30px;
+  }
+
+}
+
+@media (max-width: 1020px) {
+
+  .footer-bottom-content {
+    flex-wrap: wrap;
+  }
+
+  .footer-bottom-list-logo {
+    min-width: 100%;
+  }
+
+}
+
+@media (max-width: 670px) {
+
+  .footer-right-reserved-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+}
