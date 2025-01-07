@@ -18,3 +18,31 @@
   justify-content: space-between;
   align-items: center;
 }
+
+@media (max-width: 1200px) {
+  .home-brand-line-content {
+    flex-wrap: wrap;
+  }
+
+  .home-brand-line-content img {
+    height: 3vw;
+  }
+}
+
+@media (max-width: 700px) {
+
+  .home-brand-line-content {
+    justify-content: space-around;
+  }
+
+  .home-brand-line-content img {
+    height: 5vw;
+  }
+}
+
+@media (max-width: 500px) {
+
+  .home-brand-line-content img {
+    height: 6vw;
+  }
+}
