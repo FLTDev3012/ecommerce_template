@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[index show]
+  skip_before_action :authenticate_user!, only: %i[index show new create edit update destroy]
 
   def index
     @items = Item.all
@@ -24,9 +24,8 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    @item.user = current_user
     if @item.save
-      redirect_to item_path(@item)
+      redirect_to dashboard_path
     else
       render :new, status: :unprocessable_entity
     end
@@ -41,7 +40,7 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @item.update(item_params)
     @item.save
-    redirect_to item_path(@item)
+    redirect_to dashboard_path
   end
 
   def destroy
