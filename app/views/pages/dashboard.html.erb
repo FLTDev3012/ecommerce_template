@@ -18,6 +18,13 @@
         <td><%= item.description %></td>
         <td><%= number_to_currency(item.price, unit: "€") %></td>
         <td>
+          <% if item.photo.attached? %>
+            <%= cl_image_tag item.photo.key, height: 100, width: 150, crop: :fill %>
+          <% else %>
+            No image available
+          <% end %>
+        </td>
+        <td>
           <%= link_to "Edit", edit_item_path(item), class: "btn btn-warning" %>
           <%= link_to "Delete", item_path(item), data: { turbo_method: :delete, turbo_confirm: "Êtes-vous sûr de vouloir supprimer ?" }, class: "btn btn-danger" %>
         </td>
