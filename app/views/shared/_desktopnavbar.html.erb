@@ -1,7 +1,10 @@
 <div class="desktop-navbar-container">
   <div class="desktop-navbar-content">
 
-    <div class="logo">Shop.co</div>
+
+    <%= link_to root_path do %>
+      <div class="logo">Shop.co</div>
+    <% end %>
 
     <div class="list">
       <p>Shop <%= image_tag("arrow_down.svg", alt: "user") %></p>
@@ -19,7 +22,9 @@
 
     <div class="user-logo">
       <%= image_tag("cart.svg", alt: "cart") %>
-      <%= image_tag("user.svg", alt: "user") %>
+      <%= link_to dashboard_path do %>
+        <%= image_tag("user.svg", alt: "user") %>
+      <% end %>
     </div>
 
   </div>
