@@ -10,6 +10,7 @@ class PagesController < ApplicationController
 
   def dashboard
     @items = Item.all
+    @orders = Order.includes(:user, :order_items).all
   end
 
 end

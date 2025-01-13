@@ -6,17 +6,49 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 puts "Cleaning database..."
-Item.destroy_all
 
-puts "Creating 10 items..."
+OrderItem.destroy_all  # Supprimer tous les order_items en premier
+Order.destroy_all      # Supprimer toutes les commandes
+Item.destroy_all       # Supprimer tous les produits
+User.destroy_all       # Supprimer tous les utilisateurs
 
-10.times do |i|
-  item = Item.create!(
-    name: "Item ##{i + 1}",
-    description: "Description for Item ##{i + 1}",
-    price: rand(10.0..500.0).round(2) # Prix aléatoire entre 10€ et 500€
-  )
-  puts "Created: #{item.name} - #{item.price}€"
-end
+puts "Database cleaned!"
 
-puts "✅ Seeding completed!"
+
+puts "Seeding users..."
+
+user1 = User.create!(
+  email: "dorian@hotmail.fr",
+  password: "coucou",
+  password_confirmation: "coucou"
+)
+
+user2 = User.create!(
+  email: "dorian@gmail.com",
+  password: "coucou",
+  password_confirmation: "coucou"
+)
+
+puts "Users created successfully!"
+
+
+
+# Création des produits
+puts "Seeding items..."
+item1 = Item.create!(name: "Produit A", description: "Description A", price: 25.0)
+item2 = Item.create!(name: "Produit B", description: "Description B", price: 15.0)
+
+puts "Items created!"
+
+# Création d'une commande avec des produits
+puts "Seeding orders..."
+order = Order.create!(user: user1, status: "pending", total_amount: 0)
+
+# Ajouter les produits à la commande
+OrderItem.create!(order: order, item: item1, item_quantity: 2, price_at_order: item1.price)
+OrderItem.create!(order: order, item: item2, item_quantity: 1, price_at_order: item2.price)
+
+# Mise à jour du total de la commande
+order.update!(total_amount: order.order_items.sum { |oi| oi.item_quantity * oi.price_at_order })
+
+puts "Orders created!"

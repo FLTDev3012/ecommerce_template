@@ -33,4 +33,42 @@
   </tbody>
 </table>
 
+<p>------------------------------------------</p>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Order ID</th>
+      <th>User</th>
+      <th>Total Amount</th>
+      <th>Items</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @orders.each do |order| %>
+      <tr>
+        <td><%= order.id %></td>
+        <td><%= order.user.email %></td>
+        <td><%= number_to_currency(order.total_amount, unit: "€") %></td>
+        <td>
+          <ul>
+            <% order.order_items.each do |order_item| %>
+              <li><%= order_item.item.name %> (x<%= order_item.item_quantity %>)</li>
+            <% end %>
+          </ul>
+        </td>
+        <td>
+          <%= link_to "Edit", edit_order_path(order), class: "btn btn-warning" %>
+          <%= link_to "Delete", order_path(order), data: { turbo_method: :delete, turbo_confirm: "Confirmer la suppression ?" }, class: "btn btn-danger" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<p>------------------------------------------</p>
+
+
+
 <%= link_to "Back to Home", root_path, class: "btn btn-secondary" %>

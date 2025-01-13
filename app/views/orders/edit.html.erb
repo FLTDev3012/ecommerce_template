@@ -1,0 +1,51 @@
+<h1>Edit Order</h1>
+
+<%= form_with(model: @order, local: true) do |form| %>
+  <div>
+    <%= form.label :total_amount %>
+    <%= form.number_field :total_amount, readonly: true %>
+  </div>
+
+  <h2>Order Items</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Product</th>
+        <th>Quantity</th>
+        <th>Price at Order</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @order.order_items.each do |order_item| %>
+        <tr>
+          <td><%= order_item.item.name %></td>
+          <td>
+            <%= form_with url: update_quantity_order_item_path(order_item), method: :patch, local: true do |f| %>
+              <%= f.number_field :item_quantity, value: order_item.item_quantity, min: 1 %>
+              <%= f.submit "Update Quantity", class: "btn btn-primary btn-sm" %>
+            <% end %>
+          </td>
+          <td><%= number_to_currency(order_item.price_at_order, unit: "€") %></td>
+          <td>
+            <%= link_to "Remove", order_item_path(order_item), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger btn-sm" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <h2>Add Product to Order</h2>
+  <div>
+    <%= form.label :item_id, "Choose a product" %>
+    <%= form.collection_select :item_id, Item.all, :id, :name, prompt: "Select an item" %>
+    <%= form.label :item_quantity, "Quantity" %>
+    <%= form.number_field :item_quantity, min: 1, value: 1 %>
+  </div>
+
+  <div>
+    <%= form.submit "Update Order" %>
+  </div>
+<% end %>
+
+<%= link_to "Back to Orders", orders_path %>
