@@ -8,7 +8,9 @@
 
     <div class="list">
       <p>Shop <%= image_tag("arrow_down.svg", alt: "user") %></p>
-      <p>On sale</p>
+      <%= link_to items_path do %>
+        <p>On sale</p>
+      <% end %>
       <p>New Arrivals</p>
       <p>Brands</p>
     </div>
