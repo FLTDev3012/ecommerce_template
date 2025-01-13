@@ -1,37 +1,6 @@
-<h1>Dashboard</h1>
+<h1>Votre panier</h1>
 
-<%= link_to "Add New Item", new_item_path, class: "btn btn-primary" %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Price</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @items.each do |item| %>
-      <tr>
-        <td><%= item.name %></td>
-        <td><%= item.description %></td>
-        <td><%= number_to_currency(item.price, unit: "€") %></td>
-        <td>
-          <% if item.photo.attached? %>
-            <%= cl_image_tag item.photo.key, height: 100, width: 150, crop: :fill %>
-          <% else %>
-            No image available
-          <% end %>
-        </td>
-        <td>
-          <%= link_to "Edit", edit_item_path(item), class: "btn btn-warning" %>
-          <%= link_to "Delete", item_path(item), data: { turbo_method: :delete, turbo_confirm: "Êtes-vous sûr de vouloir supprimer ?" }, class: "btn btn-danger" %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
 <p>------------------------------------------</p>
 
@@ -72,3 +41,45 @@
 
 
 <%= link_to "Back to Home", root_path, class: "btn btn-secondary" %>
+
+
+
+
+<p>------------------------------------------</p>
+<h3>ADMIN ESPACE</h3>
+<p>------------------------------------------</p>
+
+
+
+<%= link_to "Add New Item", new_item_path, class: "btn btn-primary" %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Price</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @items.each do |item| %>
+      <tr>
+        <td><%= item.name %></td>
+        <td><%= item.description %></td>
+        <td><%= number_to_currency(item.price, unit: "€") %></td>
+        <td>
+          <% if item.photo.attached? %>
+            <%= cl_image_tag item.photo.key, height: 100, width: 150, crop: :fill %>
+          <% else %>
+            No image available
+          <% end %>
+        </td>
+        <td>
+          <%= link_to "Edit", edit_item_path(item), class: "btn btn-warning" %>
+          <%= link_to "Delete", item_path(item), data: { turbo_method: :delete, turbo_confirm: "Êtes-vous sûr de vouloir supprimer ?" }, class: "btn btn-danger" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
