@@ -22,13 +22,14 @@
           <td><%= order_item.item.name %></td>
           <td>
             <%= form_with url: update_quantity_order_item_path(order_item), method: :patch, local: true do |f| %>
+              <%= f.hidden_field :id, value: order_item.id %>
               <%= f.number_field :item_quantity, value: order_item.item_quantity, min: 1 %>
               <%= f.submit "Update Quantity", class: "btn btn-primary btn-sm" %>
             <% end %>
           </td>
           <td><%= number_to_currency(order_item.price_at_order, unit: "€") %></td>
           <td>
-            <%= link_to "Remove", order_item_path(order_item), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger btn-sm" %>
+            <%= link_to "Remove", order_item_path(order_item),  data: { turbo_method: :delete, turbo_confirm: "Êtes-vous sûr de vouloir supprimer ?" }, class: "btn btn-danger" %>
           </td>
         </tr>
       <% end %>
