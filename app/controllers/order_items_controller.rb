@@ -5,21 +5,34 @@ class OrderItemsController < ApplicationController
 
   def create
     item = Item.find(params[:item_id])
+
+    # Vérifie si l'utilisateur a déjà une commande en cours (status: "pending"), sinon, il en crée une
+    @order ||= current_user.orders.find_or_create_by(status: "pending")
+
+    # Vérifie que l'ordre est bien sauvegardé avant d'ajouter un OrderItem
+    unless @order.persisted?
+      @order.save!
+    end
+
     order_item = @order.order_items.find_by(item: item)
 
     if order_item
       # Si l'article est déjà dans la commande, on augmente la quantité
-      order_item.update(item_quantity: order_item.item_quantity + params[:item_quantity].to_i)
+      order_item.update!(item_quantity: order_item.item_quantity + params[:item_quantity].to_i)
     else
       # Sinon, on ajoute un nouvel article
-      @order.order_items.create!(item: item, item_quantity: params[:item_quantity], price_at_order: item.price)
+      @order.order_items.create!(item: item, item_quantity: params[:item_quantity].to_i, price_at_order: item.price)
     end
 
     # Mettre à jour le total de la commande
     @order.update!(total_amount: @order.order_items.sum { |oi| oi.item_quantity * oi.price_at_order })
 
     redirect_to items_path, notice: "#{item.name} added to order."
+  rescue ActiveRecord::RecordInvalid => e
+    redirect_to items_path, alert: "Failed to add item: #{e.message}"
   end
+
+
 
   def update_quantity
     @order_item = OrderItem.find(params[:id])

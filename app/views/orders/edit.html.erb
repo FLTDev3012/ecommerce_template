@@ -1,44 +1,53 @@
-<h1>Edit Order</h1>
+<% if @order.present? %>
+  <div class="order-details">
+    <h1>Edit Order</h1>
 
-<br><br><br><br>
+    <br><br><br><br>
 
-<!-- Formulaire principal pour la mise à jour de la commande (mais sans modifier les order_items directement) -->
+    <h2>Order Items</h2>
+    <br><br><br>
 
+    <table>
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Quantity</th>
+          <th>Price at Order</th>
+          <th>Price Now</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @order.order_items.each do |order_item| %>
+          <tr>
+            <td><%= order_item.item.name %></td>
+            <td>
+              <%= form_with model: order_item, url: update_quantity_order_item_path(order_item), method: :patch, local: true do |f| %>
+                <%= f.hidden_field :id, value: order_item.id %>
+                <%= f.number_field :item_quantity, value: order_item.item_quantity, min: 1 %>
+                <%= f.submit "Update Quantity", class: "btn btn-primary btn-sm" %>
+              <% end %>
+            </td>
+            <td><%= number_to_currency(order_item.price_at_order, unit: "€") %></td>
+            <td><%= number_to_currency(order_item.item.price, unit: "€") %></td>
+            <td>
+              <%= link_to "Remove", order_item_path(order_item), data: { turbo_method: :delete, turbo_confirm: "Êtes-vous sûr de vouloir supprimer ?" }, class: "btn btn-danger" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
 
-<h2>Order Items</h2>
-<br><br><br>
+    <!-- Affichage du total de la commande -->
+    <div style="margin-top: 20px; font-size: 1.2em; font-weight: bold;">
+      Total Order Amount: <%= number_to_currency(@order.total_amount, unit: "€") %>
+    </div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Product</th>
-      <th>Quantity</th>
-      <th>Price at Order</th>
-      <th>Price Now</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @order.order_items.each do |order_item| %>
-      <tr>
-        <td><%= order_item.item.name %></td>
-        <td>
-          <!-- Formulaire séparé pour la mise à jour de la quantité d'un article -->
-          <%= form_with model: order_item, url: update_quantity_order_item_path(order_item), method: :patch, local: true do |f| %>
-            <%= f.hidden_field :id, value: order_item.id %>
-            <%= f.number_field :item_quantity, value: order_item.item_quantity, min: 1 %>
-            <%= f.submit "Update Quantity", class: "btn btn-primary btn-sm" %>
-          <% end %>
-        </td>
-        <td><%= number_to_currency(order_item.price_at_order, unit: "€") %></td>
-        <td><%= number_to_currency(order_item.item.price, unit: "€") %></td>
-        <td>
-          <%= link_to "Remove", order_item_path(order_item), data: { turbo_method: :delete, turbo_confirm: "Êtes-vous sûr de vouloir supprimer ?" }, class: "btn btn-danger" %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br><br><br>
-<%= link_to "Back to Orders", orders_path %>
+    <br><br><br>
+    <%= link_to "Back to Orders", orders_path %>
+  </div>
+<% else %>
+  <p style="font-size: 1.2em; font-weight: bold; color: red;">
+    votre panier est vide.
+  </p>
+<% end %>

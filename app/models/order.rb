@@ -10,9 +10,17 @@ class Order < ApplicationRecord
 
   accepts_nested_attributes_for :order_items, allow_destroy: true
 
+  # 🛠 Initialise total_amount pour éviter les erreurs
+  after_initialize :set_default_total_amount, if: :new_record?
+
   private
 
   def calculate_total_amount
     self.total_amount = order_items.sum { |oi| oi.item_quantity.to_f * oi.price_at_order.to_f }
   end
+
+  def set_default_total_amount
+    self.total_amount ||= 0.0
+  end
+
 end
