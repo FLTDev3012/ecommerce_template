@@ -9,5 +9,13 @@ Rails.application.routes.draw do
   get 'dashboard', to: 'pages#dashboard'
 
   resources :items
+  resources :orders
+
+  resources :order_items, only: [:create, :destroy] do
+    member do
+      patch :update_quantity
+    end
+  end
+
 
 end

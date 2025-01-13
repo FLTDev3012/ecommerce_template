@@ -23,7 +23,9 @@
     </div>
 
     <div class="user-logo">
-      <%= image_tag("cart.svg", alt: "cart") %>
+      <%= link_to dashboard_path do %>
+        <%= image_tag("cart.svg", alt: "cart") %>
+      <% end %>
       <%= link_to dashboard_path do %>
         <%= image_tag("user.svg", alt: "user") %>
       <% end %>

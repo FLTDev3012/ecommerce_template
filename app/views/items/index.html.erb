@@ -7,6 +7,14 @@
         <strong><%= link_to item.name, item_path(item) %></strong><br>
         <%= item.description %><br>
         <strong>Price:</strong> <%= number_to_currency(item.price, unit: "€") %>
+
+        <!-- Formulaire pour ajouter au panier -->
+        <%= form_with url: order_items_path, method: :post, local: true do |f| %>
+          <%= f.hidden_field :item_id, value: item.id %>
+          <%= f.label :item_quantity, "Quantity:" %>
+          <%= f.number_field :item_quantity, min: 1, value: 1 %>
+          <%= f.submit "Add to Order", class: "btn btn-success" %>
+        <% end %>
       </li>
     <% end %>
   </ul>
