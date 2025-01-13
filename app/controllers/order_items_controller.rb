@@ -24,16 +24,16 @@ class OrderItemsController < ApplicationController
   def update_quantity
     @order_item = OrderItem.find(params[:id])
 
-    puts "====> Params reçus : #{params.inspect}"
-
-    if @order_item.update(item_quantity: params[:order_item][:item_quantity].to_i)
-      puts "====> Mise à jour réussie ! Nouvelle quantité : #{@order_item.item_quantity}"
-
-      @order_item.order.update!(total_amount: @order_item.order.order_items.sum { |oi| oi.item_quantity * oi.price_at_order })
-      redirect_to edit_order_path(@order_item.order), notice: "Quantity updated successfully."
+    if params[:order_item].present? && params[:order_item][:item_quantity].present?
+      new_quantity = params[:order_item][:item_quantity].to_i
+      if @order_item.update(item_quantity: new_quantity)
+        @order_item.order.update!(total_amount: @order_item.order.order_items.sum { |oi| oi.item_quantity * oi.price_at_order })
+        redirect_to edit_order_path(@order_item.order), notice: "Quantité mise à jour avec succès."
+      else
+        redirect_to edit_order_path(@order_item.order), alert: "Erreur lors de la mise à jour."
+      end
     else
-      puts "====> Échec de la mise à jour : #{@order_item.errors.full_messages}"
-      redirect_to edit_order_path(@order_item.order), alert: "Failed to update quantity."
+      redirect_to edit_order_path(@order_item.order), alert: "Erreur : paramètres invalides."
     end
   end
 
@@ -58,6 +58,12 @@ class OrderItemsController < ApplicationController
       # Si l'utilisateur a déjà une commande en cours (pending), on la récupère, sinon on en crée une nouvelle
       @order = current_user.orders.find_or_create_by(status: "pending")
     end
+  end
+
+  private
+
+  def order_item_params
+    params.require(:order_item).permit(:item_quantity)
   end
 
 end

@@ -1,52 +1,44 @@
 <h1>Edit Order</h1>
 
-<%= form_with(model: @order, local: true) do |form| %>
-  <div>
-    <%= form.label :total_amount %>
-    <%= form.number_field :total_amount, readonly: true %>
-  </div>
+<br><br><br><br>
 
-  <h2>Order Items</h2>
-  <table>
-    <thead>
+<!-- Formulaire principal pour la mise à jour de la commande (mais sans modifier les order_items directement) -->
+
+
+<h2>Order Items</h2>
+<br><br><br>
+
+<table>
+  <thead>
+    <tr>
+      <th>Product</th>
+      <th>Quantity</th>
+      <th>Price at Order</th>
+      <th>Price Now</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @order.order_items.each do |order_item| %>
       <tr>
-        <th>Product</th>
-        <th>Quantity</th>
-        <th>Price at Order</th>
-        <th>Actions</th>
+        <td><%= order_item.item.name %></td>
+        <td>
+          <!-- Formulaire séparé pour la mise à jour de la quantité d'un article -->
+          <%= form_with model: order_item, url: update_quantity_order_item_path(order_item), method: :patch, local: true do |f| %>
+            <%= f.hidden_field :id, value: order_item.id %>
+            <%= f.number_field :item_quantity, value: order_item.item_quantity, min: 1 %>
+            <%= f.submit "Update Quantity", class: "btn btn-primary btn-sm" %>
+          <% end %>
+        </td>
+        <td><%= number_to_currency(order_item.price_at_order, unit: "€") %></td>
+        <td><%= number_to_currency(order_item.item.price, unit: "€") %></td>
+        <td>
+          <%= link_to "Remove", order_item_path(order_item), data: { turbo_method: :delete, turbo_confirm: "Êtes-vous sûr de vouloir supprimer ?" }, class: "btn btn-danger" %>
+        </td>
       </tr>
-    </thead>
-    <tbody>
-      <% @order.order_items.each do |order_item| %>
-        <tr>
-          <td><%= order_item.item.name %></td>
-          <td>
-            <%= form_with url: update_quantity_order_item_path(order_item), method: :patch, local: true do |f| %>
-              <%= f.hidden_field :id, value: order_item.id %>
-              <%= f.number_field :item_quantity, value: order_item.item_quantity, min: 1 %>
-              <%= f.submit "Update Quantity", class: "btn btn-primary btn-sm" %>
-            <% end %>
-          </td>
-          <td><%= number_to_currency(order_item.price_at_order, unit: "€") %></td>
-          <td>
-            <%= link_to "Remove", order_item_path(order_item),  data: { turbo_method: :delete, turbo_confirm: "Êtes-vous sûr de vouloir supprimer ?" }, class: "btn btn-danger" %>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+    <% end %>
+  </tbody>
+</table>
 
-  <h2>Add Product to Order</h2>
-  <div>
-    <%= form.label :item_id, "Choose a product" %>
-    <%= form.collection_select :item_id, Item.all, :id, :name, prompt: "Select an item" %>
-    <%= form.label :item_quantity, "Quantity" %>
-    <%= form.number_field :item_quantity, min: 1, value: 1 %>
-  </div>
-
-  <div>
-    <%= form.submit "Update Order" %>
-  </div>
-<% end %>
-
+<br><br><br>
 <%= link_to "Back to Orders", orders_path %>

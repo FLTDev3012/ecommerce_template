@@ -37,6 +37,8 @@ puts "Users created successfully!"
 puts "Seeding items..."
 item1 = Item.create!(name: "Produit A", description: "Description A", price: 25.0)
 item2 = Item.create!(name: "Produit B", description: "Description B", price: 15.0)
+item3 = Item.create!(name: "Produit C", description: "Description C", price: 10.0)
+item4 = Item.create!(name: "Produit D", description: "Description D", price: 30.0)
 
 puts "Items created!"
 

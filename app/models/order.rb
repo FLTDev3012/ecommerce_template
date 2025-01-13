@@ -8,11 +8,11 @@ class Order < ApplicationRecord
 
   before_save :calculate_total_amount
 
+  accepts_nested_attributes_for :order_items, allow_destroy: true
+
   private
 
   def calculate_total_amount
     self.total_amount = order_items.sum { |oi| oi.item_quantity.to_f * oi.price_at_order.to_f }
   end
-
-
 end
